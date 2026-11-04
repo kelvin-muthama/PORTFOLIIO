@@ -367,16 +367,15 @@
         <form class="contact-form" id="contactForm">
           <h3>Send a message</h3>
           <p>This form opens your email app with your message ready to send.</p>
-          <div class="form-row"><label for="name">Your name</label><input id="name" name="name" type="text"
-              placeholder="Jane Doe" required></div>
-          <div class="form-row"><label for="email">Your email</label><input id="email" name="email" type="email"
-              placeholder="jane@example.com" required></div>
-          <div class="form-row"><label for="subject">Subject</label><input id="subject" name="subject" type="text"
-              placeholder="Let's work together" required></div>
-          <div class="form-row"><label for="message">Message</label><textarea id="message" name="message" rows="4"
-              placeholder="Tell me a little about your idea..." required></textarea></div>
-          <button class="button button-orange button-submit" type="submit">Prepare email <i
-              data-lucide="arrow-up-right"></i></button>
+          <input type="text" id="name" name="name" required>
+
+          <input type="email" id="email" name="email" required>
+
+          <input type="text" id="subject" name="subject" required>
+
+          <textarea id="message" name="message" required></textarea>
+
+          <button type="submit">Send Message</button>
         </form>
       </div>
     </section>

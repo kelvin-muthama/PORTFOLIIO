@@ -1,6 +1,6 @@
 const portfolioConfig = {
   email: "muthamakelvinmutuku@gmail.com",
-  linkedin: "https://www.linkedin.com/in/kelvin-mutuku-muthama",
+  linkedin: "https://www.linkedin.com/in/kelvin-muthama2",
   github: "https://github.com/kelvin-muthama",
   projects: {
     "KHF-LAM": "https://a-data-driven-analysis-model-for-kenyas-health-facility-landsc.streamlit.app/",

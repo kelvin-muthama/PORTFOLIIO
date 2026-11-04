@@ -106,28 +106,54 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // This uses mailto rather than pretending to submit to a server.
-  document.getElementById("contactForm").addEventListener("submit", event => {
-    event.preventDefault();
-    if (!portfolioConfig.email.trim()) {
-      showToast("Please add your email in script.js before using the contact form.");
-      return;
-    }
-    const form = new FormData(event.currentTarget);
-    const subject = encodeURIComponent(form.get("subject"));
-    const body = encodeURIComponent(
-      `Name: ${form.get("name")}\nEmail: ${form.get("email")}\n\n${form.get("message")}`
-    );
-    window.location.href = `mailto:${portfolioConfig.email}?subject=${subject}&body=${body}`;
-    document.getElementById("formNote").textContent = "Your email app should open with the message prepared. Send it from there.";
-  });
 
-  document.querySelectorAll(".placeholder-link").forEach(link => {
-    if (!link.dataset.project && !link.matches("#linkedinContact") && !link.matches('[aria-label="GitHub profile"]')) {
-      link.addEventListener("click", event => {
+  // Contact form handler
+  const contactForm = document.getElementById("contactForm");
+
+if (contactForm) {
+    contactForm.addEventListener("submit", async function (event) {
         event.preventDefault();
-        showToast("Add your real profile URL in script.js before publishing.");
-      });
-    }
-  });
-});
+
+        if (!contactForm.reportValidity()) return;
+
+        const submitButton = contactForm.querySelector(
+            'button[type="submit"]'
+        );
+
+        const originalText = submitButton.textContent;
+
+        submitButton.disabled = true;
+        submitButton.textContent = "Sending...";
+
+        try {
+            const response = await fetch(
+                "https://formspree.io/f/mwllaqzp",
+                {
+                    method: "POST",
+                    body: new FormData(contactForm),
+                    headers: {
+                        "Accept": "application/json"
+                    }
+                }
+            );
+
+            if (response.ok) {
+                alert("Thank you! Your message has been sent successfully.");
+                contactForm.reset();
+            } else {
+                const result = await response.json();
+                alert(
+                    result.errors
+                        ? result.errors.map(error => error.message).join("\n")
+                        : "Unable to send your message. Please try again."
+                );
+            }
+        } catch (error) {
+            console.error("Contact form error:", error);
+            alert("A connection error occurred. Please try again.");
+        } finally {
+            submitButton.disabled = false;
+            submitButton.textContent = originalText;
+        }
+    });
+}})

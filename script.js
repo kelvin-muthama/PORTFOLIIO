@@ -1,4 +1,3 @@
-
 const portfolioConfig = {
   email: "muthamakelvinmutuku@gmail.com",
   linkedin: "https://www.linkedin.com/in/kelvin-mutuku-muthama",

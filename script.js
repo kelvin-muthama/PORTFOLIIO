@@ -6,7 +6,7 @@ const portfolioConfig = {
     "KHF-LAM": "https://a-data-driven-analysis-model-for-kenyas-health-facility-landsc.streamlit.app/",
     "Supermarket Sales Dashboard": "https://github.com/Taught90/POWER-BI-DASHBORDS",
     "Scrapy project": "https://github.com/Taught90/PYTHON-WEB-SCRAPERS",
-    "HOTS FOR DATA": "https://hotsfordatamvp.netlify.app/"
+    "HOTS FOR DATA": "https://hotsfordata.co.ke/"
   }
 };
 
